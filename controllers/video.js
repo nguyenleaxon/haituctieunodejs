@@ -55,7 +55,7 @@ module.exports = {
         var skipVideo = req.body.skip;
         var limitVideo = 5;
 
-        Video.find({}).sort({'name':1}).skip(skipVideo).limit(5)
+        Video.find({}).sort({date:-1}).skip(skipVideo).limit(5)
            .exec(function(error,video){
                 res.json (video.map ( function(returnVideo){
                     return {
@@ -94,7 +94,7 @@ module.exports = {
         var limitVideo = 5;
 
         Video.count(function(err, count){
-            Video.find({}).sort({'name':1}).skip(skipVideo).limit(5)
+            Video.find({}).sort({date:-1}).skip(skipVideo).limit(5)
 
                 .exec(function(error,video){
                     res.json (video.map ( function(returnVideo){
