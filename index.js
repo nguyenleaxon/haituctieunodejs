@@ -34,7 +34,7 @@ app.engine('handlebars', handlebars.engine);
 // set handle bar layout
 app.set('view engine','handlebars');
 //set application port
-app.set('port',process.env.PORT || 4000);
+app.set('port',process.env.PORT || 5000);
 
 
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -52,7 +52,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
-mongoose.connect('mongodb://localhost:27017/mumandkid', function (error) {
+mongoose.connect('mongodb://localhost:27017/haituctieu', function (error) {
     if (error) {
         console.log(error);
     }

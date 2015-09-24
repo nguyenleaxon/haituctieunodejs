@@ -54,28 +54,20 @@ module.exports = {
         var categoryID =  req.body.categoryID;
         var skipVideo = req.body.skip;
         var limitVideo = 5;
-        Channel.find({"category.$id": ObjectId(categoryID)},'ObjectId',function(error,result){
-            console.dir("channel list" + result);
-            var channelList = new Array();
-            for(channelId in result){
-                channelList.push(result[channelId]._id);
-            }
-            Video.find({}).sort({'name':1}).skip(skipVideo).limit(5)
-                .where('channel.$id')
-                .in(channelList)
-                .exec(function(error,video){
-                    res.json (video.map ( function(returnVideo){
-                        return {
-                            id: returnVideo._id,
-                            name : returnVideo.name,
-                            image: returnVideo.image,
-                            url: returnVideo.url
 
-                        }
-                    }));
+        Video.find({}).sort({'name':1}).skip(skipVideo).limit(5)
+           .exec(function(error,video){
+                res.json (video.map ( function(returnVideo){
+                    return {
+                        id: returnVideo._id,
+                        name : returnVideo.name,
+                        image: returnVideo.image,
+                        url: returnVideo.url
 
-                });
-        });
+                    }
+                }));
+
+            });
 
 
     },
@@ -98,33 +90,24 @@ module.exports = {
     },
 
     getAllVideoFirstTime : function(req,res,next) {
-        var categoryID =  req.body.categoryID;
         var skipVideo = req.body.skip;
         var limitVideo = 5;
 
         Video.count(function(err, count){
-            Channel.find({"category.$id": ObjectId(categoryID)},'ObjectId',function(error,result){
+            Video.find({}).sort({'name':1}).skip(skipVideo).limit(5)
 
-                var channelList = new Array();
-                for(channelId in result){
-                    channelList.push(result[channelId]._id);
-                }
-                Video.find({}).sort({'name':1}).skip(skipVideo).limit(5)
-                    .where('channel.$id')
-                    .in(channelList)
-                    .exec(function(error,video){
-                        res.json (video.map ( function(returnVideo){
-                            return {
-                                id: returnVideo._id,
-                                name : returnVideo.name,
-                                image: returnVideo.image,
-                                url: returnVideo.url,
-                                total:count
-                            }
-                        }));
+                .exec(function(error,video){
+                    res.json (video.map ( function(returnVideo){
+                        return {
+                            id: returnVideo._id,
+                            name : returnVideo.name,
+                            image: returnVideo.image,
+                            url: returnVideo.url,
+                            total:count
+                        }
+                    }));
 
-                    });
-            });
+                });
         });
     }
 

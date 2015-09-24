@@ -8,31 +8,7 @@ angular.module('mumandkid', [])
 
         $scope.categories = [{
             value: '55e06eb1a54794c549c64936',
-            label: 'English songs'
-        }, {
-            value: '55e7af263b48c9e5983a94ca',
-            label: 'Advertising songs'
-        }, {
-            value: '55e7b3603b48c9e5983a94cd',
-            label: 'Vietnamese songs'
-        }, {
-            value: '55e7b7793b48c9e5983a94d0',
-            label: 'Stories'
-        }, {
-            value: '55e7bbf43b48c9e5983a94d3',
-            label: 'Game'
-        }, {
-            value: '55e7e90869436d7e2e4f7ad3',
-            label: 'Food for kids'
-        }, {
-            value: '55e7e96d69436d7e2e4f7ad5',
-            label: 'Sicks'
-        }, {
-            value: '55ec660144a662ddf8a05973',
-            label: 'Cartoon'
-        },{
-            value: '55e7e90869436d7e2e4f7ad3',
-            label: 'Music for mum'
+            label: 'Video Clip Hai'
         }
 
 
