@@ -20,9 +20,9 @@
         <tbody>
         <tr  ng-repeat="video in videos">
             <td><%video.id%></td>
-            <td><img ng-src="video.imagePath" ></td>
+            <td><img class="full-image" ng-src="http:<%video.image%>" ></td>
             <td><%video.name%></td>
-            <td><button ng-click="deteleVideo(video.id)">Delete</button></td>
+            <td><button ng-click="deteleVideo(video.id,$index)">Delete</button></td>
         </tr>
 
         </tbody>

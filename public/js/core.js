@@ -32,7 +32,7 @@ angular.module('mumandkid', [])
             return promise;
         }
 
-        $scope.deteleVideo = function (videoID) {
+        $scope.deteleVideo = function (videoID,index) {
             $scope.loading = true;
             var requestVideo = {};
             requestVideo.videoID = videoID;
@@ -42,6 +42,7 @@ angular.module('mumandkid', [])
                 data: requestVideo
             }).success(function (data) {
                 $scope.loading = true;
+                $scope.videos.splice(index,1);
                 alert("Document has been removed");
             }).error(function (data, status, headers, config) {
                 $scope.loading = true;
