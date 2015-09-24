@@ -1,0 +1,33 @@
+<div ng-controller="CategoryController" >
+
+
+
+        <div>
+            <select ng-model="mySelect" ng-change="getAllVideoByCategory(mySelect)">
+                <option ng-repeat="category in categories" value="<%category.value%>"><%category.label%>
+            </select>
+        </div>
+    <div ng-show="loading" class="loading"><img src="">LOADING...</div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Video ID</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  ng-repeat="video in videos">
+            <td><%video.id%></td>
+            <td><img ng-src="video.imagePath" ></td>
+            <td><%video.name%></td>
+            <td><button ng-click="deteleVideo(video.id)">Delete</button></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+</div>
