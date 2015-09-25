@@ -1,7 +1,4 @@
 <div ng-controller="CategoryController" >
-
-
-
         <div>
             <select ng-model="mySelect" ng-change="getAllVideoByCategory(mySelect)">
                 <option ng-repeat="category in categories" value="<%category.value%>"><%category.label%>

@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
     , Schema = mongoose.Schema
 
 var channelSchema = mongoose.Schema({
+    id: String,
     name: String,
     channelName: String,
     channelUrl: String,

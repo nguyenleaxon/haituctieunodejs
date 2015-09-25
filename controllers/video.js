@@ -11,8 +11,38 @@ module.exports = {
         app.post("/findAllVideoByName",this.findAllVideoByName);
         app.post("/getAllVideoByCategoryWeb",this.getAllVideoByCategoryWeb);
         app.post("/deleteVideoWeb",this.deleteVideoWeb);
+        app.get("/videoweb",this.videoweb);
+        app.post("/saveVideoWeb",this.saveVideoWeb)
 
 
+    },
+
+    saveVideoWeb : function(req,res,next) {
+        var video = req.body.video;
+        var channelrequest = req.body.channel;
+
+            var saveVideo = new Video({
+                name: video.name,
+                image : video.image,
+                url : video.youtubeid,
+                unicodeName : video.unicodeName,
+                isVideo : video.isVideo,
+                createdTime : new Date(),
+                channel :{
+                   _id : channelrequest
+                }
+            });
+            saveVideo.save(function(error){
+                if (error) res.json({msgId:"fail"});
+                return res.json({ msgId: "done" })
+            });
+
+
+
+    },
+
+    videoweb : function(req,res,next) {
+      return res.render('video');
     },
 
     deleteVideoWeb : function(req,res,next) {
@@ -68,8 +98,6 @@ module.exports = {
                 }));
 
             });
-
-
     },
 
 

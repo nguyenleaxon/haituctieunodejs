@@ -7,6 +7,9 @@ var videoSchema = mongoose.Schema({
     name: String,
     image: String,
     url: String,
+    unicodeName : String,
+    isVideo : Boolean,
+    createdTime: Date,
     channel: { type: Schema.Types.ObjectId, ref: 'Channel' }
 });
 

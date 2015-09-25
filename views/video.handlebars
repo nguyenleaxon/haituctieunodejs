@@ -1,0 +1,68 @@
+<h2 class="text-center">Add Video</h2>
+<div ng-controller="VideoController" >
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" data-ng-model="video.name" class="form-control" id="name" placeholder="Name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="youtubeVideoID" class="col-sm-2 control-label" >Youtube ID</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="image" data-ng-model="video.youtubeid" placeholder="Youtube VideoID">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="unicodeName" class="col-sm-2 control-label">Unicode Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="unicodeName" data-ng-model="video.unicodeName" placeholder="Unicode Name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="channelURL" class="col-sm-2 control-label">Channel URL </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="channel" placeholder="Channel URL" data-ng-model="video.channelurl">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="image" class="col-sm-2 control-label">Image</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="image" placeholder="Image" data-ng-model="video.image">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" data-ng-model="video.isVideo"> Video
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="channel" class="col-sm-2 control-label">Channel</label>
+        <div class="col-sm-10">
+            <select class="form-control" data-ng-model="channel">
+                <option value="55de6c6af398e8f8176fb303">10</option>
+                <option value="2">20</option>
+                <option value="3">30</option>
+                <option value="4">40</option>
+                <option value="5">50</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" class="btn btn-default" ng-click="saveVideo(video,channel)">Add</button>
+        </div>
+    </div>
+</form>
+</div>

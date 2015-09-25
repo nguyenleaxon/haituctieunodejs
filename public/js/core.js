@@ -3,20 +3,17 @@ angular.module('mumandkid', [])
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }])
-    .controller('CategoryController', function ($scope, $http,$rootScope) {
+    .controller('CategoryController', function ($scope, $http, $rootScope) {
         $scope.firstName = "John";
 
         $scope.categories = [{
             value: '55e06eb1a54794c549c64936',
             label: 'Video Clip Hai'
         }
-
-
         ];
-
         $scope.getAllVideoByCategory = function (categoryID) {
 
-             var requestVideo = {};
+            var requestVideo = {};
             requestVideo.categoryID = categoryID;
 
             var promise = $http({
@@ -32,7 +29,7 @@ angular.module('mumandkid', [])
             return promise;
         }
 
-        $scope.deteleVideo = function (videoID,index) {
+        $scope.deteleVideo = function (videoID, index) {
             $scope.loading = true;
             var requestVideo = {};
             requestVideo.videoID = videoID;
@@ -42,7 +39,7 @@ angular.module('mumandkid', [])
                 data: requestVideo
             }).success(function (data) {
                 $scope.loading = false;
-                $scope.videos.splice(index,1);
+                $scope.videos.splice(index, 1);
                 alert("Document has been removed");
             }).error(function (data, status, headers, config) {
                 $scope.loading = false;
@@ -52,3 +49,36 @@ angular.module('mumandkid', [])
         }
 
     })
+.controller('VideoController', function ($scope, $http, $rootScope) {
+
+        $scope.video = {
+            name : "",
+            youtubeid : "",
+            unicodeName: "",
+            channelurl:"",
+            image:"",
+            isVideo : true
+
+        };
+        $scope.channel ="";
+
+
+        $scope.saveVideo = function(video,channel){
+            var requestVideo = {};
+            requestVideo.video = video;
+            requestVideo.channel = channel;
+
+            var promise = $http({
+                method: 'POST',
+                url: '/saveVideoWeb',
+                data: requestVideo
+            }).success(function (data) {
+               alert("Document has been added");
+            }).error(function (data, status, headers, config) {
+                alert("Document hasn't been added");
+            });
+            return promise;
+
+        }
+
+})
