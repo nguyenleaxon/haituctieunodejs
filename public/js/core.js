@@ -3,7 +3,7 @@ angular.module('mumandkid', [])
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     }])
-    .controller('CategoryController', function ($scope, $http, $rootScope) {
+    .controller('CategoryController', function ($scope, $http,$rootScope) {
         $scope.firstName = "John";
 
         $scope.categories = [{
@@ -41,11 +41,11 @@ angular.module('mumandkid', [])
                 url: '/deleteVideoWeb',
                 data: requestVideo
             }).success(function (data) {
-                $scope.loading = true;
+                $scope.loading = false;
                 $scope.videos.splice(index,1);
                 alert("Document has been removed");
             }).error(function (data, status, headers, config) {
-                $scope.loading = true;
+                $scope.loading = false;
                 alert("Document hasn't been removed");
             });
             return promise;
