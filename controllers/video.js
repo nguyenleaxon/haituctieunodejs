@@ -85,7 +85,7 @@ module.exports = {
         var skipVideo = req.body.skip;
         var limitVideo = 5;
 
-        Video.find({}).sort({date:-1}).skip(skipVideo).limit(5)
+        Video.find({}).sort({'createdTime': 'desc'}).skip(skipVideo).limit(5)
            .exec(function(error,video){
                 res.json (video.map ( function(returnVideo){
                     return {
@@ -100,6 +100,24 @@ module.exports = {
             });
     },
 
+    getAllVideoFirstTime : function(req,res,next) {
+        var skipVideo = req.body.skip;
+        Video.count(function(err, count){
+            Video.find({}).sort({'createdTime': 'desc'}).skip(skipVideo).limit(5)
+                .exec(function(error,video){
+                    res.json (video.map ( function(returnVideo){
+                        return {
+                            id: returnVideo._id,
+                            name : returnVideo.name,
+                            image: returnVideo.image,
+                            url: returnVideo.url,
+                            total:count
+                        }
+                    }));
+
+                });
+        });
+    },
 
     findAllVideoByName : function(req,res,next) {
         var text =  req.body.videoName;
@@ -116,29 +134,6 @@ module.exports = {
             }));
         }).sort("name").limit(20);
     },
-
-    getAllVideoFirstTime : function(req,res,next) {
-        var skipVideo = req.body.skip;
-        var limitVideo = 5;
-
-        Video.count(function(err, count){
-            Video.find({}).sort({date:-1}).skip(skipVideo).limit(5)
-
-                .exec(function(error,video){
-                    res.json (video.map ( function(returnVideo){
-                        return {
-                            id: returnVideo._id,
-                            name : returnVideo.name,
-                            image: returnVideo.image,
-                            url: returnVideo.url,
-                            total:count
-                        }
-                    }));
-
-                });
-        });
-    }
-
 
 
 };
